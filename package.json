@@ -1,0 +1,28 @@
+{
+  "name": "@anthonylzq/expense-control-schemas",
+  "version": "1.0.0",
+  "description": "Shared Zod schemas for expense-control backend and app",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyLzq/expense-control-schemas.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "peerDependencies": {
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "zod": "^4.3.6"
+  }
+}
