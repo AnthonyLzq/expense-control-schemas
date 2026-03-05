@@ -48,8 +48,24 @@ const duplicateExpenseResponse = z.object({
 })
 type DuplicateExpenseResponse = z.infer<typeof duplicateExpenseResponse>
 
+const updateExpense = z.object({
+  amount: z.number().positive().optional(),
+  currency: z.string().min(1).optional(),
+  merchant: z.string().nullable().optional(),
+  description: z.string().nullable().optional(),
+  date: z.iso.datetime().optional(),
+  suspicious: z.boolean().optional(),
+  tagIds: z.array(z.number().int().positive()).optional(),
+})
+type UpdateExpense = z.infer<typeof updateExpense>
+
 export {
-  createManualExpense, type CreateManualExpense,
-  duplicateExpenseResponse, type DuplicateExpenseResponse,
-  expense, type ExpenseDTO,
+  createManualExpense,
+  type CreateManualExpense,
+  duplicateExpenseResponse,
+  type DuplicateExpenseResponse,
+  expense,
+  type ExpenseDTO,
+  updateExpense,
+  type UpdateExpense,
 }
