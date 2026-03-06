@@ -12,6 +12,7 @@ const aggregateBody = z.object({
     merchants: z.array(z.string()).optional(),
     includeSuspicious: z.boolean().optional(),
     tagIds: z.array(z.number().int().positive()).optional(),
+    groupExtensions: z.boolean().default(false).optional(),
   }).optional(),
   metrics: z.array(metricEnum).min(1),
   sort: z.object({
