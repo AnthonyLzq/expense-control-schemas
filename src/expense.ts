@@ -59,13 +59,33 @@ const updateExpense = z.object({
 })
 type UpdateExpense = z.infer<typeof updateExpense>
 
+const bulkDeleteExpenses = z.object({
+  ids: z.array(z.number().int().positive()).min(1).max(50),
+})
+type BulkDeleteExpenses = z.infer<typeof bulkDeleteExpenses>
+
+const mergeExpenses = z.object({
+  expenseIds: z.array(z.number().int().positive()).min(2).max(10),
+  merged: z.object({
+    merchant: z.string().nullable().optional(),
+    description: z.string().nullable().optional(),
+    date: z.iso.datetime(),
+    tagIds: z.array(z.number().int().positive()).optional(),
+  }),
+})
+type MergeExpenses = z.infer<typeof mergeExpenses>
+
 export {
+  bulkDeleteExpenses,
+  type BulkDeleteExpenses,
   createManualExpense,
   type CreateManualExpense,
   duplicateExpenseResponse,
   type DuplicateExpenseResponse,
   expense,
   type ExpenseDTO,
+  mergeExpenses,
+  type MergeExpenses,
   updateExpense,
   type UpdateExpense,
 }
