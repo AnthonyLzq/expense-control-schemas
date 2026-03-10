@@ -28,8 +28,8 @@ type ExpenseDTO = z.infer<typeof expense>
 const createManualExpense = z.object({
   amount: z.number().positive(),
   currency: z.string().min(1).default('PEN'),
-  merchant: z.string().nullable().optional(),
-  description: z.string().nullable().optional(),
+  merchant: z.string().max(100).nullable().optional(),
+  description: z.string().max(500).nullable().optional(),
   cardId: z.number().int().positive().nullable().optional(),
   date: z.iso.datetime(),
   force: z.boolean().default(false),
@@ -51,8 +51,8 @@ type DuplicateExpenseResponse = z.infer<typeof duplicateExpenseResponse>
 const updateExpense = z.object({
   amount: z.number().positive().optional(),
   currency: z.string().min(1).optional(),
-  merchant: z.string().nullable().optional(),
-  description: z.string().nullable().optional(),
+  merchant: z.string().max(100).nullable().optional(),
+  description: z.string().max(500).nullable().optional(),
   date: z.iso.datetime().optional(),
   suspicious: z.boolean().optional(),
   tagIds: z.array(z.number().int().positive()).optional(),
@@ -67,8 +67,8 @@ type BulkDeleteExpenses = z.infer<typeof bulkDeleteExpenses>
 const mergeExpenses = z.object({
   expenseIds: z.array(z.number().int().positive()).min(2).max(10),
   merged: z.object({
-    merchant: z.string().nullable().optional(),
-    description: z.string().nullable().optional(),
+    merchant: z.string().max(100).nullable().optional(),
+    description: z.string().max(500).nullable().optional(),
     date: z.iso.datetime(),
     tagIds: z.array(z.number().int().positive()).optional(),
   }),
