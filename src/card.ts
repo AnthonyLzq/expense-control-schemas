@@ -6,6 +6,7 @@ const card = z.object({
   defaultName: z.string(),
   label: z.string().nullable(),
   color: z.string().nullable(),
+  closingDay: z.number().nullable(),
   parentCardId: z.number().nullable(),
   userId: z.number(),
   createdAt: z.string(),
@@ -27,6 +28,7 @@ type CreateCard = z.infer<typeof createCard>
 const updateCard = z.object({
   label: z.string().min(1).max(50).optional(),
   color: z.string().max(7).nullable().optional(),
+  closingDay: z.number().int().min(1).max(31).nullable().optional(),
   parentCardId: z.number().int().positive().nullable().optional(),
 })
 type UpdateCard = z.infer<typeof updateCard>

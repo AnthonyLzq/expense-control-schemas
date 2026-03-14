@@ -1,6 +1,6 @@
 export * from './aggregation'
-export * from './aggregation'
 export * from './auth'
+export * from './billing'
 export * from './card'
 export * from './expense'
 export * from './subscription'
