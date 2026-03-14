@@ -43,11 +43,16 @@ const generateBillingPeriods = z.object({
 })
 type GenerateBillingPeriods = z.infer<typeof generateBillingPeriods>
 
-const billingEstimate = z.object({
-  total: z.number(),
+const billingEstimateCurrencyTotal = z.object({
   currency: z.string(),
-  paymentDate: z.string(),
-  periodEnd: z.string(),
+  total: z.number(),
+  expenseCount: z.number(),
+})
+
+const billingEstimate = z.object({
+  totals: z.array(billingEstimateCurrencyTotal),
+  paymentDate: z.string().nullable(),
+  periodEnd: z.string().nullable(),
   expenseCount: z.number(),
 })
 type BillingEstimateDTO = z.infer<typeof billingEstimate>
