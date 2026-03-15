@@ -57,12 +57,21 @@ const billingEstimate = z.object({
 })
 type BillingEstimateDTO = z.infer<typeof billingEstimate>
 
+const billingSummaryCard = z.object({
+  cardId: z.number(),
+  cardName: z.string(),
+  last4: z.string(),
+  paymentDate: z.string(),
+  totals: z.array(billingEstimateCurrencyTotal),
+})
+
 const billingSummary = z.object({
   totals: z.array(billingEstimateCurrencyTotal),
   paymentDateRange: z.object({
-    earliest: z.string().nullable(),
-    latest: z.string().nullable(),
+    earliest: z.string(),
+    latest: z.string(),
   }),
+  cards: z.array(billingSummaryCard),
   expenseCount: z.number(),
   cardCount: z.number(),
 })

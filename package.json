@@ -1,6 +1,6 @@
 {
   "name": "@anthonylzq/expense-control-schemas",
-  "version": "1.9.0",
+  "version": "1.11.0",
   "description": "Shared Zod schemas for expense-control backend and app",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
